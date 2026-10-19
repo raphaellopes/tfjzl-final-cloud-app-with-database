@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  web:
+    build: .
+     # Binding to 0.0.0.0 is required for Docker to route traffic to your localhost
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      # Mounts your local code into the container so changes refresh automatically
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
